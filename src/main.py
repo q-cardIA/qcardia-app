@@ -4,17 +4,20 @@ from PySide6.QtWidgets import QApplication
 
 from controllers.dicom_controller import DICOMController
 from model.dicom_model import DICOMModel
-from view.dicom_view import DICOMView
+
+# from view.dicom_view import DICOMView
+from view.main_window import MainWindow
 
 logging.basicConfig(level=logging.INFO)
 
 
 def main():
-    app = QApplication([])
+    app = QApplication()
+    main_window = MainWindow()
+
     model = DICOMModel()
-    view = DICOMView()
-    controller = DICOMController(view, model)
-    view.show()
+    controller = DICOMController(main_window, model)
+    main_window.show()
     app.exec_()
 
 
